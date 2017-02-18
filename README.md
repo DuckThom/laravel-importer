@@ -1,4 +1,4 @@
-<p align="center"><h1>Laravel Importer</h1></p>
+<p align="center">Laravel Importer</p>
 
 <p align="center">
 <a href="https://styleci.io/repos/82349568"><img src="https://styleci.io/repos/82349568/shield?branch=master" alt="StyleCI"></a>
@@ -7,24 +7,30 @@
 
 <h1>Note: This project is not finished yet. It will not work in it's current form and/or state.</h1>
 
-<h3># Configuration</h3>
+<h3># Features</h3>
+This plugin currently only comes with a CSV runner which  means it is only able to parse CSV files out of the box. There will be more info on how to add runners added later.
+
+<h3># Example configuration</h3>
 `config/importer.php`:
 ```php
 return [
-    /**
-     * These will define the model and table specific properties
-     * to be used for a specific import.
-     */
+    /***********************************************************
+     * Importers are used for defining specific import tasks
+     * For instance, a ProductImporter could import a file with
+     * products into a table.
+     ***********************************************************/
     'importers' => [
-        'product' => ProductImporter::class,
+        'default' => \App\Importers\ProductImporter::class
     ],
-    
-    /**
-     * These will loop through the file and perform the database
-     * insertions.
-     */
-    'runner' => [
-        'csv' => CsvRunner::class, // Import the data from a csv file
+
+    /***********************************************************
+     * Runners are used for looping through the file
+     * The default is a CSV runner which will loop though
+     * CSV files line-by-line. A runner uses an importer to get
+     * import specific settings like the model class.
+     ***********************************************************/
+    'runners' => [
+        'default' => \Luna\Importer\Runners\CsvRunner::class
     ]
 ];
 ```
