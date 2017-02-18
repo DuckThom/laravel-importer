@@ -2,8 +2,6 @@
 
 namespace Luna\Importer;
 
-use Luna\Importer\Contracts\Runner;
-use Luna\Importer\Contracts\Importer;
 use \Illuminate\Support\ServiceProvider as LaravelServiceProvider;
 
 /**
@@ -14,15 +12,27 @@ use \Illuminate\Support\ServiceProvider as LaravelServiceProvider;
  */
 class ServiceProvider extends LaravelServiceProvider
 {
-    protected function boot()
+    /**
+     * Boot
+     *
+     * @return void
+     */
+    protected function boot(): void
     {
-        $this->app->bind(Runner::class);
-
-        $this->app->bind(Importer::class);
+        $this->publishes([
+            __DIR__.'/config.php' => config_path('importer.php'),
+        ], 'config');
     }
 
-    protected function register()
+    /**
+     * Register
+     *
+     * @return void
+     */
+    protected function register(): void
     {
-
+        $this->app->singleton('importer', function () {
+            return new Importer;
+        });
     }
 }

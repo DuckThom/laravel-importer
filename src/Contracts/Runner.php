@@ -12,6 +12,13 @@ namespace Luna\Importer\Contracts;
 interface Runner
 {
     /**
+     * Things to do before the import
+     *
+     * @return void
+     */
+    public function beforeImport(): void;
+
+    /**
      * The import runner
      *
      * @return void
@@ -19,16 +26,24 @@ interface Runner
     public function import(): void;
 
     /**
-     * Start the import
+     * Things to do after the import
      *
      * @return void
      */
-    public function handle();
+    public function afterImport(): void;
+
+    /**
+     * Start the import
+     *
+     * @param  Importer  $importer
+     * @return void
+     */
+    public function handle(Importer $importer);
 
     /**
      * Check if the file is valid for importing
      *
      * @return bool
      */
-    public function isValid(): bool;
+    public function validateFile(): bool;
 }

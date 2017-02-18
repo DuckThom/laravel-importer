@@ -1,9 +1,9 @@
-<center>
-<h1>Laravel Importer</h1>
+<p align="center"><h1>Laravel Importer</h1></p>
 
+<p align="center">
 <a href="https://styleci.io/repos/82349568"><img src="https://styleci.io/repos/82349568/shield?branch=master" alt="StyleCI"></a>
 <a href="https://travis-ci.org/DuckThom/laravel-importer"><img src="https://travis-ci.org/DuckThom/laravel-importer.svg?branch=master" alt="TravisCI"></a>
-</center>
+</p>
 
 <h1>Note: This project is not finished yet. It will not work in it's current form and/or state.</h1>
 
