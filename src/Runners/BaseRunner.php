@@ -77,7 +77,7 @@ abstract class BaseRunner implements Runner
     /**
      * @inheritdoc
      */
-    public function handle(Importer $importer): void
+    public function handle(Importer $importer)
     {
         $this->now = Carbon::now();
         $this->importer = $importer;
@@ -130,7 +130,7 @@ abstract class BaseRunner implements Runner
      * @throws InvalidFileException
      * @throws FileNotFoundException
      */
-    public function beforeImport(): void
+    public function beforeImport()
     {
         if (!File::exists($this->importer->getFilePath())) {
             throw new FileNotFoundException($this->importer->getFilePath());
@@ -148,14 +148,14 @@ abstract class BaseRunner implements Runner
      *
      * @return void
      */
-    abstract public function import(): void;
+    abstract public function import();
 
     /**
      * After import handler
      *
      * @return void
      */
-    public function afterImport(): void
+    public function afterImport()
     {
         fclose($this->file);
     }
@@ -165,7 +165,7 @@ abstract class BaseRunner implements Runner
      *
      * @return void
      */
-    public function removeFile(): void
+    public function removeFile()
     {
         File::delete($this->importer->getFilePath());
     }

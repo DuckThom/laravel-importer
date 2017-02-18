@@ -19,7 +19,7 @@ class TestImporter extends BaseImporter implements Importer
         return false;
     }
 
-    public function removeStale(): void
+    public function removeStale()
     {
         throw new \Exception("Nothing to remove");
     }
@@ -47,12 +47,12 @@ class TestImporter extends BaseImporter implements Importer
         return 'test';
     }
 
-    public function importSuccess(): void
+    public function importSuccess()
     {
         throw new \Exception("Success");
     }
 
-    public function importFailed(array $data): void
+    public function importFailed(array $data)
     {
         throw $data['exception'];
     }

@@ -23,7 +23,7 @@ abstract class CsvRunner extends BaseRunner implements Runner
      * @throws \Luna\Importer\Exceptions\InvalidColumnCountException
      * @throws \Exception
      */
-    public function import(): void
+    public function import()
     {
         DB::beginTransaction();
 

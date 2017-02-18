@@ -64,7 +64,7 @@ interface Importer
      *
      * @return void
      */
-    public function importSuccess(): void;
+    public function importSuccess();
 
     /**
      * Things to do when the import failed
@@ -72,7 +72,7 @@ interface Importer
      * @param  array  $data
      * @return void
      */
-    public function importFailed(array $data): void;
+    public function importFailed(array $data);
 
     /**
      * Determine which lines need to be removed by the importer.
@@ -80,5 +80,5 @@ interface Importer
      * By default, the lines that were not present in the import file are
      * removed after the other lines are updated, added or remained unchanged
      */
-    public function removeStale(): void;
+    public function removeStale();
 }

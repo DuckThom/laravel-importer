@@ -17,7 +17,7 @@ class ServiceProvider extends LaravelServiceProvider
      *
      * @return void
      */
-    protected function boot(): void
+    protected function boot()
     {
         $this->publishes([
             __DIR__.'/config.php' => config_path('importer.php'),
@@ -29,7 +29,7 @@ class ServiceProvider extends LaravelServiceProvider
      *
      * @return void
      */
-    protected function register(): void
+    protected function register()
     {
         $this->app->singleton('importer', function () {
             return new Importer;

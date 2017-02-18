@@ -30,7 +30,7 @@ abstract class BaseImporter implements Importer
      *
      * Default: Do nothing
      */
-    public function importSuccess(): void
+    public function importSuccess()
     {
         //
     }
@@ -42,7 +42,7 @@ abstract class BaseImporter implements Importer
      *
      * @param  array  $data
      */
-    public function importFailed(array $data): void
+    public function importFailed(array $data)
     {
         //
     }

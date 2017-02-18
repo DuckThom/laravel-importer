@@ -16,21 +16,21 @@ interface Runner
      *
      * @return void
      */
-    public function beforeImport(): void;
+    public function beforeImport();
 
     /**
      * The import runner
      *
      * @return void
      */
-    public function import(): void;
+    public function import();
 
     /**
      * Things to do after the import
      *
      * @return void
      */
-    public function afterImport(): void;
+    public function afterImport();
 
     /**
      * Start the import

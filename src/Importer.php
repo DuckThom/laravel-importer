@@ -147,7 +147,7 @@ class Importer
      *
      * @return void
      */
-    public function run(): void
+    public function run()
     {
         $this->getRunnerInstance()->handle($this->getImporterInstance());
     }

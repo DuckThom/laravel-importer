@@ -7,7 +7,7 @@ use Luna\Importer\Runners\BaseRunner;
 
 class TestRunner extends BaseRunner implements Runner
 {
-    public function import(): void
+    public function import()
     {
         //
     }
