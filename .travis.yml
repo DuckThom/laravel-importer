@@ -1,0 +1,20 @@
+language: php
+
+php:
+- 7.0
+- 7.1
+
+sudo: false
+
+before_install:
+- mysql -e 'create database testing;'
+- composer self-update
+
+install:
+- composer install --no-interaction
+
+script: vendor/bin/phpunit
+
+branches:
+    only:
+        - master
