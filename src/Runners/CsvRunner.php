@@ -5,6 +5,8 @@ namespace Luna\Importer\Runners;
 use Illuminate\Support\Facades\DB;
 use Luna\Importer\Contracts\Runner;
 use Illuminate\Support\Facades\Validator;
+use Luna\Importer\Events\ImportFailed;
+use Luna\Importer\Events\ImportSuccess;
 use Luna\Importer\Exceptions\InvalidCsvLineException;
 
 /**
@@ -78,14 +80,11 @@ class CsvRunner extends BaseRunner implements Runner
                 DB::commit();
             }
 
-            $this->importer->importSuccess();
+            event(new ImportSuccess($this->importer));
         } catch (\Exception $e) {
             DB::rollBack();
 
-            $this->importer->importFailed([
-                'line' => $iteration ?? false,
-                'exception' => $e
-            ]);
+            event(new ImportFailed($this->importer, $e));
 
             // Re-throw the exception to catch it from outside
             throw $e;

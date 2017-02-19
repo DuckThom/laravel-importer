@@ -24,26 +24,4 @@ abstract class BaseImporter implements Importer
 
         return new $model;
     }
-
-    /**
-     * Successful import handler
-     *
-     * Default: Do nothing
-     */
-    public function importSuccess()
-    {
-        //
-    }
-
-    /**
-     * Failed import handler
-     *
-     * Default: Do nothing
-     *
-     * @param  array  $data
-     */
-    public function importFailed(array $data)
-    {
-        //
-    }
 }

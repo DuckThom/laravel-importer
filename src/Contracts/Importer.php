@@ -58,19 +58,4 @@ interface Importer
      * @return bool
      */
     public function shouldCleanup(): bool;
-
-    /**
-     * Things to do when the import succeeded
-     *
-     * @return void
-     */
-    public function importSuccess();
-
-    /**
-     * Things to do when the import failed
-     *
-     * @param  array  $data
-     * @return void
-     */
-    public function importFailed(array $data);
 }
