@@ -1,8 +1,12 @@
 <h1 align="center">Laravel Importer</h1>
 
 <p align="center">
+<a href="https://packagist.org/packages/luna/laravel-importer"><img src="https://poser.pugx.org/luna/laravel-importer/v/stable" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/luna/laravel-importer"><img src="https://poser.pugx.org/luna/laravel-importer/downloads" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/luna/laravel-importer"><img src="https://poser.pugx.org/luna/laravel-importer/v/unstable" alt="Latest Unstable Version"></a>
 <a href="https://styleci.io/repos/82349568"><img src="https://styleci.io/repos/82349568/shield?branch=master" alt="StyleCI"></a>
 <a href="https://travis-ci.org/DuckThom/laravel-importer"><img src="https://travis-ci.org/DuckThom/laravel-importer.svg?branch=master" alt="TravisCI"></a>
+<a href="https://packagist.org/packages/luna/laravel-importer"><img src="https://poser.pugx.org/luna/laravel-importer/license" alt="License"></a>
 </p>
 
 <h3># Prerequisites</h3>
