@@ -53,7 +53,7 @@ class Importer
         $this->importers = config('importer.importers');
 
         $this->runner = $this->runners['default'];
-        $this->importers = $this->importers['default'];
+        $this->importer = $this->importers['default'];
     }
 
     /**
@@ -94,32 +94,32 @@ class Importer
      * Get a runner instance from the registered runners list
      *
      * @param  string  $runner
-     * @return Runner
+     * @return string
      * @throws RunnerNotRegisteredException
      */
-    public function getRunner(string $runner): Runner
+    public function getRunner(string $runner): string
     {
         if (!isset($this->runners[$runner])) {
             throw new RunnerNotRegisteredException($runner);
         }
 
-        return new $this->runners[$runner];
+        return $this->runners[$runner];
     }
 
     /**
      * Get a runner instance from the registered runners list
      *
      * @param  string  $importer
-     * @return ImporterContract
+     * @return string
      * @throws ImporterNotRegisteredException
      */
-    public function getImporter(string $importer): ImporterContract
+    public function getImporter(string $importer): string
     {
         if (!isset($this->importers[$importer])) {
             throw new ImporterNotRegisteredException($importer);
         }
 
-        return new $this->importers[$importer];
+        return $this->importers[$importer];
     }
 
     /**
@@ -129,7 +129,7 @@ class Importer
      */
     public function getRunnerInstance(): Runner
     {
-        return $this->runner;
+        return new $this->runner;
     }
 
     /**
@@ -139,7 +139,7 @@ class Importer
      */
     public function getImporterInstance(): ImporterContract
     {
-        return $this->importer;
+        return new $this->importer;
     }
 
     /**

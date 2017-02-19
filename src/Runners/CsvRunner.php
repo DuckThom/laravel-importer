@@ -5,7 +5,7 @@ namespace Luna\Importer\Runners;
 use Illuminate\Support\Facades\DB;
 use Luna\Importer\Contracts\Runner;
 use Illuminate\Support\Facades\Validator;
-use Luna\Importer\Exceptions\InvalidColumnCountException;
+use Luna\Importer\Exceptions\InvalidCsvLineException;
 
 /**
  * CSV runner
@@ -20,7 +20,7 @@ class CsvRunner extends BaseRunner implements Runner
      * Run the import
      *
      * @return void
-     * @throws \Luna\Importer\Exceptions\InvalidColumnCountException
+     * @throws \Luna\Importer\Exceptions\InvalidCsvLineException
      * @throws \Exception
      */
     public function import()
@@ -35,9 +35,9 @@ class CsvRunner extends BaseRunner implements Runner
                 $csvLine = str_getcsv(fgets($this->file), ';');
                 $columnCount = count($csvLine);
 
-                if ($columnCount === 1 && $this->columnCount !== 1) {
+                if ($columnCount === 1 && !$this->importer->validateLine($csvLine)) {
                     continue;
-                } elseif ($columnCount === $this->columnCount) {
+                } elseif ($this->importer->validateLine($csvLine)) {
                     $fields = $this->importer->parseLine($csvLine);
                     $hash = $this->makeHash($fields);
                     $item = $this->importer->getModelInstance()
@@ -66,7 +66,7 @@ class CsvRunner extends BaseRunner implements Runner
                         $item->save();
                     }
                 } else {
-                    throw new InvalidColumnCountException($iteration, $columnCount, $this->columnCount);
+                    throw new InvalidCsvLineException($iteration);
                 }
             }
 

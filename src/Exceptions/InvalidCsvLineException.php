@@ -3,26 +3,24 @@
 namespace Luna\Importer\Exceptions;
 
 /**
- * Invalid column count exception
+ * Invalid csv line exception
  *
  * @package     Luna\Importer
  * @subpackage  Exceptions
  * @author      Thomas Wiringa <thomas.wiringa@gmail.com>
  */
-class InvalidColumnCountException extends \Exception
+class InvalidCsvLineException extends \Exception
 {
     /**
      * InvalidColumnCountException constructor.
      *
      * @param  int  $line
-     * @param  int  $got
-     * @param  int  $expected
      * @param  int  $code
      * @param  \Exception|null  $previous
      */
-    public function __construct($line, $got, $expected, $code = 0, \Exception $previous = null)
+    public function __construct(int $line, int $code = 0, \Exception $previous = null)
     {
-        $message = "Invalid column count at line: {$line}. Got {$got}, expected {$expected}";
+        $message = "Line {$line} in the CSV file failed it's validation checks.";
 
         parent::__construct($message, $code, $previous);
     }
