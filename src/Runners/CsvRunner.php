@@ -34,39 +34,14 @@ class CsvRunner extends BaseRunner implements Runner
 
             while (! feof($this->file)) {
                 $iteration++;
+
                 $csvLine = str_getcsv(fgets($this->file), ';');
                 $columnCount = count($csvLine);
 
                 if ($columnCount === 1 && !$this->importer->validateLine($csvLine)) {
                     continue;
                 } elseif ($this->importer->validateLine($csvLine)) {
-                    $fields = $this->importer->parseLine($csvLine);
-                    $hash = $this->makeHash($fields);
-                    $item = $this->importer->getModelInstance()
-                        ->where($this->importer->getUniqueKey(), $fields[$this->importer->getUniqueKey()])
-                        ->lockForUpdate()
-                        ->first();
-
-                    if ($item === null) {
-                        // Create a new item and fill it with the fields
-                        $item = $this->importer->getModelInstance();
-                        $item->fill($fields);
-
-                        $this->added++;
-                    } elseif ($hash !== $item->hash) {
-                        // Update the fields if there is a hash mismatch
-                        $item->fill($fields);
-
-                        $this->updated++;
-                    } elseif ($hash === $item->hash) {
-                        $this->unchanged++;
-                    }
-
-                    $item->hash = $hash;
-
-                    if (!$this->dryRun) {
-                        $item->save();
-                    }
+                    $this->handleLine($csvLine);
                 } else {
                     throw new InvalidCsvLineException($iteration);
                 }
@@ -88,6 +63,44 @@ class CsvRunner extends BaseRunner implements Runner
 
             // Re-throw the exception to catch it from outside
             throw $e;
+        }
+    }
+
+    /**
+     * Handle a csv line
+     *
+     * @param  array  $csvLine
+     * @return void
+     * @throws InvalidCsvLineException
+     */
+    public function handleLine(array $csvLine)
+    {
+        $fields = $this->importer->parseLine($csvLine);
+        $hash = $this->makeHash($fields);
+        $item = $this->importer->getModelInstance()
+            ->where($this->importer->getUniqueKey(), $fields[$this->importer->getUniqueKey()])
+            ->lockForUpdate()
+            ->first();
+
+        if ($item === null) {
+            // Create a new item and fill it with the fields
+            $item = $this->importer->getModelInstance();
+            $item->fill($fields);
+
+            $this->added++;
+        } elseif ($hash !== $item->hash) {
+            // Update the fields if there is a hash mismatch
+            $item->fill($fields);
+
+            $this->updated++;
+        } elseif ($hash === $item->hash) {
+            $this->unchanged++;
+        }
+
+        $item->hash = $hash;
+
+        if (!$this->dryRun) {
+            $item->save();
         }
     }
 
