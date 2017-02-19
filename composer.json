@@ -1,6 +1,6 @@
 {
   "name": "luna/laravel-importer",
-  "description": "Extendable importer for Laravel",
+  "description": "Extensible importer for Laravel",
   "type": "library",
   "license": "MIT",
   "authors": [
