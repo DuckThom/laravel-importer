@@ -72,7 +72,7 @@ class CsvRunner extends BaseRunner implements Runner
 
             $this->lines = $this->importer->getModelInstance()->count();
 
-            $this->importer->removeStale();
+            $this->removeStale();
 
             if (!$this->dryRun) {
                 DB::commit();

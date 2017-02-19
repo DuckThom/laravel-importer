@@ -32,4 +32,14 @@ class RunnerTest extends TestCase
     {
         $this->assertInstanceOf(Runner::class, $this->runner);
     }
+
+    /**
+     * @test
+     * @expectedException \Exception
+     * @expectedExceptionMessage Nothing to remove
+     */
+    public function it_should_remove_stale_items()
+    {
+        $this->runner->removeStale();
+    }
 }

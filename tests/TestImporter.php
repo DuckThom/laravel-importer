@@ -19,11 +19,6 @@ class TestImporter extends BaseImporter implements Importer
         return false;
     }
 
-    public function removeStale()
-    {
-        throw new \Exception("Nothing to remove");
-    }
-
     public function parseLine(array $data): array
     {
         return [

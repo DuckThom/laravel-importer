@@ -106,7 +106,12 @@ abstract class BaseRunner implements Runner
     }
 
     /**
-     * Remove the items that were not imported
+     * Determine which lines need to be removed by the importer.
+     *
+     * By default, the lines that were not present in the import file are
+     * removed after the other lines are updated, added or remained unchanged
+     *
+     * @return void
      */
     public function removeStale()
     {
@@ -117,7 +122,7 @@ abstract class BaseRunner implements Runner
 
         $this->deleted = $query->count();
 
-        return $query->delete();
+        $query->delete();
     }
 
         /**

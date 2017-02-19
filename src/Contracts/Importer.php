@@ -73,12 +73,4 @@ interface Importer
      * @return void
      */
     public function importFailed(array $data);
-
-    /**
-     * Determine which lines need to be removed by the importer.
-     *
-     * By default, the lines that were not present in the import file are
-     * removed after the other lines are updated, added or remained unchanged
-     */
-    public function removeStale();
 }

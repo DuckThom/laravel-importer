@@ -44,16 +44,6 @@ class ImporterTest extends TestCase
 
     /**
      * @test
-     * @expectedException \Exception
-     * @expectedExceptionMessage Nothing to remove
-     */
-    public function it_should_remove_stale_items()
-    {
-        $this->importer->removeStale();
-    }
-
-    /**
-     * @test
      */
     public function it_should_have_file_path()
     {

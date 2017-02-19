@@ -16,4 +16,9 @@ class TestRunner extends BaseRunner implements Runner
     {
         return false;
     }
+
+    public function removeStale()
+    {
+        throw new \Exception("Nothing to remove");
+    }
 }
