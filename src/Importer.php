@@ -76,10 +76,10 @@ class Importer
     /**
      * Set the importer
      *
-     * @param  ImporterContract  $importer
+     * @param  ImporterContract|string  $importer
      * @return $this
      */
-    public function importer(ImporterContract $importer)
+    public function importer($importer)
     {
         if ($importer instanceof ImporterContract) {
             $this->importer = $importer;
