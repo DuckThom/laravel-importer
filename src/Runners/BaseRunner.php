@@ -23,63 +23,63 @@ abstract class BaseRunner implements Runner
      *
      * @var Carbon
      */
-    protected $now;
+    public $now;
 
     /**
      * File handle of the file to be parsed
      *
      * @var resource
      */
-    protected $file;
+    public $file;
 
     /**
      * The amount of imported rows
      *
      * @var int
      */
-    protected $lines = 0;
+    public $lines = 0;
 
     /**
      * The amount of items that were added
      *
      * @var int
      */
-    protected $added = 0;
+    public $added = 0;
 
     /**
      * The amount of items that were deleted
      *
      * @var int
      */
-    protected $deleted = 0;
+    public $deleted = 0;
 
     /**
      * The amount of items that were updated
      *
      * @var int
      */
-    protected $updated = 0;
+    public $updated = 0;
 
     /**
      * The amount of unchanged items
      *
      * @var int
      */
-    protected $unchanged = 0;
+    public $unchanged = 0;
 
     /**
      * If true, don't make changes to the database
      *
      * @var bool
      */
-    protected $dryRun = false;
+    public $dryRun = false;
 
     /**
      * The importer instance
      *
      * @var Importer
      */
-    protected $importer;
+    public $importer;
 
     /**
      * @inheritdoc
