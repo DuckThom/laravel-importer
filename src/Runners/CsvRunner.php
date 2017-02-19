@@ -14,7 +14,7 @@ use Luna\Importer\Exceptions\InvalidColumnCountException;
  * @subpackage  Runners
  * @author      Thomas Wiringa <thomas.wiringa@gmail.com>
  */
-abstract class CsvRunner extends BaseRunner implements Runner
+class CsvRunner extends BaseRunner implements Runner
 {
     /**
      * Run the import
@@ -39,6 +39,7 @@ abstract class CsvRunner extends BaseRunner implements Runner
                     continue;
                 } elseif ($columnCount === $this->columnCount) {
                     $fields = $this->importer->parseLine($csvLine);
+                    $hash = $this->makeHash($fields);
                     $item = $this->importer->getModelInstance()
                         ->where($this->importer->getUniqueKey(), $fields[$this->importer->getUniqueKey()])
                         ->lockForUpdate()
@@ -60,8 +61,10 @@ abstract class CsvRunner extends BaseRunner implements Runner
                     }
 
                     $item->hash = $hash;
-                    $item->imported_at = $this->now;
-                    $item->save();
+
+                    if (!$this->dryRun) {
+                        $item->save();
+                    }
                 } else {
                     throw new InvalidColumnCountException($iteration, $columnCount, $this->columnCount);
                 }
@@ -71,7 +74,9 @@ abstract class CsvRunner extends BaseRunner implements Runner
 
             $this->importer->removeStale();
 
-            DB::commit();
+            if (!$this->dryRun) {
+                DB::commit();
+            }
 
             $this->importer->importSuccess();
         } catch (\Exception $e) {

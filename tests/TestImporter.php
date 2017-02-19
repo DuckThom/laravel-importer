@@ -34,7 +34,7 @@ class TestImporter extends BaseImporter implements Importer
 
     public function getFilePath(): string
     {
-        return '/test.csv';
+        return __DIR__.'/test.csv';
     }
 
     public function getModel(): string

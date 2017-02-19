@@ -1,9 +1,19 @@
 <?php
 
-namespace Tests;
+namespace Tests\Contracts;
 
+use Tests\TestCase;
+use Tests\TestModel;
+use Tests\TestImporter;
 use Luna\Importer\Contracts\Importer;
 
+/**
+ * Importer contract test
+ *
+ * @package     Luna\Importer
+ * @subpackage  Tests\Contracts
+ * @author      Thomas Wiringa <thomas.wiringa@gmail.com>
+ */
 class ImporterTest extends TestCase
 {
     /**
@@ -48,7 +58,7 @@ class ImporterTest extends TestCase
     public function it_should_have_file_path()
     {
         $this->assertEquals(
-            '/test.csv',
+            realpath(__DIR__.'/../test.csv'),
             $this->importer->getFilePath()
         );
     }

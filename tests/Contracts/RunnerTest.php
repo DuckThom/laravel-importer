@@ -1,9 +1,18 @@
 <?php
 
-namespace Tests;
+namespace Tests\Contracts;
 
+use Tests\TestCase;
+use Tests\TestRunner;
 use Luna\Importer\Contracts\Runner;
 
+/**
+ * Runner contract test
+ *
+ * @package     Luna\Importer
+ * @subpackage  Tests\Contracts
+ * @author      Thomas Wiringa <thomas.wiringa@gmail.com>
+ */
 class RunnerTest extends TestCase
 {
     /**
@@ -13,7 +22,7 @@ class RunnerTest extends TestCase
 
     public function setUp()
     {
-        $this->runner = new TestRunner;
+        $this->runner = new TestRunner();
     }
 
     /**

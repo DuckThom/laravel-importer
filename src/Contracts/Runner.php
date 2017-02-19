@@ -46,4 +46,11 @@ interface Runner
      * @return bool
      */
     public function validateFile(): bool;
+
+    /**
+     * What to do when removing the file
+     *
+     * @return void
+     */
+    public function removeFile();
 }

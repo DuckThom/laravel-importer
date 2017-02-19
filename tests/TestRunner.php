@@ -11,4 +11,9 @@ class TestRunner extends BaseRunner implements Runner
     {
         //
     }
+
+    public function validateFile(): bool
+    {
+        return false;
+    }
 }

@@ -68,6 +68,13 @@ abstract class BaseRunner implements Runner
     protected $unchanged = 0;
 
     /**
+     * If true, don't make changes to the database
+     *
+     * @var bool
+     */
+    protected $dryRun = false;
+
+    /**
      * The importer instance
      *
      * @var Importer
@@ -168,5 +175,32 @@ abstract class BaseRunner implements Runner
     public function removeFile()
     {
         File::delete($this->importer->getFilePath());
+    }
+
+    /**
+     * Set the dry run status
+     *
+     * @param  bool  $dryRun
+     * @return $this
+     */
+    public function setDryRun(bool $dryRun)
+    {
+        $this->dryRun = $dryRun;
+
+        return $this;
+    }
+
+    /**
+     * Make a hash of the data to be imported
+     *
+     * The hash made from this method will determine if the row
+     * needs to be updated or not.
+     *
+     * @param  array  $data
+     * @return string
+     */
+    public function makeHash(array $data): string
+    {
+        return sha1(implode($data));
     }
 }
