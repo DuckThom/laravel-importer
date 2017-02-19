@@ -55,11 +55,11 @@ class CsvRunner extends BaseRunner implements Runner
                 DB::commit();
             }
 
-            event(new ImportSuccess($this->importer));
+            event(new ImportSuccess($this, $this->importer));
         } catch (\Exception $e) {
             DB::rollBack();
 
-            event(new ImportFailed($this->importer, $e));
+            event(new ImportFailed($this, $this->importer, $e));
 
             // Re-throw the exception to catch it from outside
             throw $e;

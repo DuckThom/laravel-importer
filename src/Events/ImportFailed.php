@@ -2,6 +2,7 @@
 
 namespace Luna\Importer\Events;
 
+use Luna\Importer\Contracts\Runner;
 use Luna\Importer\Contracts\Importer;
 
 /**
@@ -13,6 +14,11 @@ use Luna\Importer\Contracts\Importer;
  */
 class ImportFailed
 {
+    /**
+     * @var Runner
+     */
+    public $runner;
+
     /**
      * @var Importer
      */
@@ -26,11 +32,13 @@ class ImportFailed
     /**
      * ImportSuccess constructor.
      *
+     * @param  Runner  $runner
      * @param  Importer  $importer
      * @param  \Exception  $exception
      */
-    function __construct(Importer $importer, \Exception $exception)
+    function __construct(Runner $runner, Importer $importer, \Exception $exception)
     {
+        $this->runner = $runner;
         $this->importer = $importer;
         $this->exception = $exception;
     }
