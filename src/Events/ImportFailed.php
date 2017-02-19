@@ -36,7 +36,7 @@ class ImportFailed
      * @param  Importer  $importer
      * @param  \Exception  $exception
      */
-    function __construct(Runner $runner, Importer $importer, \Exception $exception)
+    public function __construct(Runner $runner, Importer $importer, \Exception $exception)
     {
         $this->runner = $runner;
         $this->importer = $importer;
