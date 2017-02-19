@@ -30,7 +30,7 @@ class ImportSuccess
      * @param  Runner  $runner
      * @param  Importer  $importer
      */
-    function __construct(Runner $runner, Importer $importer)
+    public function __construct(Runner $runner, Importer $importer)
     {
         $this->runner = $runner;
         $this->importer = $importer;
