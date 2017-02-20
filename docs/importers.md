@@ -71,7 +71,7 @@ public function shouldCleanup(): bool;
 ## Example
 
 ```php
-namespace Tests;
+namespace App\Importers;
 
 use App\Product;
 use Luna\Importer\Contracts\Importer;
