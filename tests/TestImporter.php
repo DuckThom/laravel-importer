@@ -6,7 +6,7 @@ use Luna\Importer\Contracts\Importer;
 use Luna\Importer\Importers\BaseImporter;
 
 /**
- * Test runner
+ * Test importer
  *
  * @package     Luna\Importer
  * @subpackage  Tests
@@ -40,16 +40,6 @@ class TestImporter extends BaseImporter implements Importer
     public function getUniqueKey(): string
     {
         return 'test';
-    }
-
-    public function importSuccess()
-    {
-        throw new \Exception("Success");
-    }
-
-    public function importFailed(array $data)
-    {
-        throw $data['exception'];
     }
 
     public function validateLine(array $data): bool

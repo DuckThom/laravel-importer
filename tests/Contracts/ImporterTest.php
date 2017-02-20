@@ -82,26 +82,4 @@ class ImporterTest extends TestCase
             $this->importer->getUniqueKey()
         );
     }
-
-    /**
-     * @test
-     * @expectedException \Exception
-     * @expectedExceptionMessage Failed
-     */
-    public function it_should_do_something_on_failure()
-    {
-        $this->importer->importFailed([
-            'exception' => new \Exception("Failed")
-        ]);
-    }
-
-    /**
-     * @test
-     * @expectedException \Exception
-     * @expectedExceptionMessage Success
-     */
-    public function it_should_do_something_on_success()
-    {
-        $this->importer->importSuccess();
-    }
 }
