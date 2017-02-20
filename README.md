@@ -43,7 +43,7 @@ Publish the configuration:
 This plugin currently only comes with a CSV runner which means it is only able to parse CSV files out of the box. There will be more info on how to add runners added later.
 
 <h3># Documentation</h3>
-Not finished yet but will become available over at [https://duckthom.github.io/laravel-importer](https://duckthom.github.io/laravel-importer).
+http://laravel-importer.readthedocs.io/en/latest/
 
 <h3># Example configuration</h3>
 `config/importer.php`:
