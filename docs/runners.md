@@ -14,21 +14,27 @@ These are the methods a runner should have, custom runners should implement the 
  * @return void
  */
 public function beforeImport();
+```
 
+```php
 /**
  * The import runner
  *
  * @return void
  */
 public function import();
+```
 
+```php
 /**
  * Things to do after the import
  *
  * @return void
  */
 public function afterImport();
+```
 
+```php
 /**
  * Start the import
  *
@@ -36,21 +42,27 @@ public function afterImport();
  * @return void
  */
 public function handle(Importer $importer);
+```
 
+```php
 /**
  * Check if the file is valid for importing
  *
  * @return bool
  */
 public function validateFile(): bool;
+```
 
+```php
 /**
  * What to do when removing the file
  *
  * @return void
  */
 public function removeFile();
+```
 
+```php
 /**
  * Determine which lines need to be removed by the importer.
  *
