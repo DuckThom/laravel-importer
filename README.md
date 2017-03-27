@@ -10,43 +10,52 @@
 </p>
 
 <h3># Prerequisites</h3>
+
 Before using this package, make sure you are at least running PHP 7.0 and that you have Laravel 5.4.
 
 <h3># Setup</h3>
+
 First, add this package to your `composer.json`:
+
 ```
     composer require luna/laravel-importer "~1.0"
 ```
 
 Add the service provider and facade to `config/app.php`:
+
 ```php
     'providers' => [
         // ...
         // Package providers
-        
+
         Luna\Importer\ServiceProvider::class,
     ],
-     
+
     'aliases' => [
         // ...
-        
+
         "Import" => Luna\Importer\ImporterFacade::class
     ]
 ```
 
 Publish the configuration:
+
 ```
     php artisan vendor:publish --provider="Luna\Importer\ServiceProvider"
 ```
 
 <h3># Features</h3>
+
 This plugin currently only comes with a CSV runner which means it is only able to parse CSV files out of the box. There will be more info on how to add runners added later.
 
 <h3># Documentation</h3>
+
 http://laravel-importer.readthedocs.io/en/latest/
 
 <h3># Example configuration</h3>
+
 `config/importer.php`:
+
 ```php
 return [
     /***********************************************************
@@ -71,4 +80,5 @@ return [
 ```
 
 <h3># Contributing</h3>
+
 Pull requests for new features are welcome as long as they include tests for it as well.
