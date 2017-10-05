@@ -125,7 +125,7 @@ abstract class BaseRunner implements Runner
         $query->delete();
     }
 
-        /**
+    /**
      * Check if the file is valid
      *
      * @return bool
