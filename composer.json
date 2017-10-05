@@ -29,5 +29,15 @@
       "Tests\\": "tests"
     }
   },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Luna\\Importer\\ServiceProvider"
+      ],
+      "aliases": {
+        "Import": "Luna\\Importer\\ImporterFacade"
+      }
+    }
+  },
   "minimum-stability": "stable"
 }
